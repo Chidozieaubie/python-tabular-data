@@ -21,8 +21,8 @@ def get_regression_line(x, y):
     regression = stats.linregress(x, y)
     slope = regression.slope
     intercept = regression.intercept
-    plt.scatter(x, y, label = 'Data')
-    plt.plot(x, slope * x + intercept, color = "orange", label = 'Fitted line')
+    plt.scatter(x, y, label = "")
+    plt.plot(x, slope * x + intercept)
     plt.xlabel("Petal length (cm)")
     plt.ylabel("Sepal length (cm)")
     plt.legend()
@@ -31,6 +31,7 @@ def get_regression_line(x, y):
 
 if __name__ == '__main__':
 
+    
     dataframe = pd.read_csv("iris.csv")
     versicolor = dataframe[dataframe.species == "Iris_versicolor"]
     virginica = dataframe[dataframe.species == "Iris_virginica"]
@@ -44,12 +45,8 @@ if __name__ == '__main__':
     y3 = setosa.sepal_length_cm
 
     result1 = get_regression_line(x1, y1)
-    plt.savefig("versicolor_petal_v_sepal_length_regress.png")
-    plt.close()
     result2 = get_regression_line(x2, y2)
-    plt.savefig("virginica_petal_v_sepal_length_regress.png")
-    plt.close()
     result3 = get_regression_line(x3, y3)
-    plt.savefig("setosa_petal_v_sepal_length_regress.png")
+    plt.savefig("all_three_species.png")
     plt.close('all')
     quit()
